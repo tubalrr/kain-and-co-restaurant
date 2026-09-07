@@ -1,1 +1,82 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>KAIN & CO Demo</title><style>body{font-family:Arial;min-height:100vh;margin:0;display:grid;place-items:center;background:#f7f3ec;text-align:center}a{padding:15px 25px;background:#d9a441;color:#fff;text-decoration:none;border-radius:8px}</style></head><body><div><h1>KAIN & CO.</h1><p>Admin Dashboard Demo Preview</p><a href='admin.html'>Open Admin Dashboard Demo</a></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>KAIN & CO. Admin Demo</title>
+<link rel="stylesheet" href="css/admin.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="loginView" class="login-view">
+  <form id="loginForm" class="login-card">
+    <div class="brand">KAIN<span>&</span>CO.</div>
+    <h1>Admin Login</h1>
+    <p>Demo Dashboard Preview</p>
+    <input id="email" type="email" placeholder="Email" required>
+    <input id="password" type="password" placeholder="Password" required>
+    <button type="submit">Login to Dashboard</button>
+    <small class="hint">Demo: Any email and password will work.</small>
+  </form>
+</div>
+
+<div id="dashboardView" class="dashboard hidden">
+  <aside>
+    <div class="side-brand">KAIN<span>&</span>CO.</div>
+    <p class="side-label">ADMIN PANEL</p>
+    <button class="tab active" data-tab="overview">📊 <span>Dashboard</span></button>
+    <button class="tab" data-tab="reservations">📅 <span>Reservations</span></button>
+    <button class="tab" data-tab="menu">🍽️ <span>Menu Manager</span></button>
+    <a href="index.html">🌐 <span>View Website</span></a>
+    <button id="logoutBtn" class="logout">🚪 <span>Logout</span></button>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><h1 id="pageTitle">Dashboard Overview</h1><p>Welcome back, Administrator 👋</p></div>
+      <div class="profile">👤 <span>Admin</span></div>
+    </header>
+
+    <section id="overview" class="panel active">
+      <div class="stats">
+        <div class="stat"><div class="stat-icon">📅</div><div><span>Total Reservations</span><strong id="totalReservations">24</strong><small>+4 this week</small></div></div>
+        <div class="stat"><div class="stat-icon">⏳</div><div><span>Pending</span><strong id="pendingReservations">7</strong><small>Needs confirmation</small></div></div>
+        <div class="stat"><div class="stat-icon">🍽️</div><div><span>Menu Items</span><strong id="totalMenu">8</strong><small>Currently available</small></div></div>
+      </div>
+      <div class="content-card">
+        <div class="card-title"><h2>Recent Reservations</h2><button class="link-tab" data-go="reservations">View All →</button></div>
+        <div id="recentReservations"></div>
+      </div>
+    </section>
+
+    <section id="reservations" class="panel">
+      <div class="content-card">
+        <div class="card-title"><h2>Reservation Management</h2><span class="badge">Demo Data</span></div>
+        <div class="table-wrap">
+          <table><thead><tr><th>Customer</th><th>Phone</th><th>Date</th><th>Time</th><th>Guests</th><th>Request</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="reservationTable"></tbody></table>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="panel">
+      <div class="content-card">
+        <div class="card-title"><h2>Menu Manager</h2><button id="addMenuBtn" class="gold-btn">+ Add Menu Item</button></div>
+        <div id="menuList" class="menu-list"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="menuModal" class="modal hidden"><div class="modal-box">
+  <button class="close" id="closeModal">×</button>
+  <h2 id="modalTitle">Add Menu Item</h2>
+  <form id="menuForm">
+    <input id="menuName" placeholder="Dish Name" required>
+    <select id="menuCategory"><option value="Filipino">Filipino</option><option value="International">International</option></select>
+    <input id="menuPrice" type="number" min="1" placeholder="Price (₱)" required>
+    <textarea id="menuDescription" placeholder="Description"></textarea>
+    <button class="gold-btn" type="submit">Save Menu Item</button>
+  </form>
+</div></div>
+<script src="js/admin-demo.js"></script>
+</body></html>
